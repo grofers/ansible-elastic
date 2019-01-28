@@ -1,3 +1,49 @@
+## 6.5.1.1 - 2018/11/27
+
+### Fixes
+
+* [#516](https://github.com/elastic/ansible-elasticsearch/pull/516) - @Crazybus - Only attempt to copy the old users file if it actually exists
+
+## 6.5.1 - 2018/11/26
+
+### Features
+
+* 6.5.1  as default Elasticsearch version
+
+### Fixes
+
+* [#487](https://github.com/elastic/ansible-elasticsearch/pull/487) - @lazouz - Disable check mode to make install plugins idempotent
+* [#501](https://github.com/elastic/ansible-elasticsearch/pull/501) - @kaxil - Make the order of configs consistent for comparing
+* [#497](https://github.com/elastic/ansible-elasticsearch/pull/497) - @Crazybus - Document es_use_repository and es_custom_package_url 
+* [#504](https://github.com/elastic/ansible-elasticsearch/pull/504) - @victorgs - Using tests as filters is deprecated
+* [#493](https://github.com/elastic/ansible-elasticsearch/pull/493) - @Crazybus - Only use the first found java version if there are multiple installed
+
+## 6.4.0 - 2018/08/24
+
+### Features
+
+* 6.4.0 as default Elasticsearch version
+
+### Fixes
+
+* [#484](https://github.com/elastic/ansible-elasticsearch/pull/484) - @kimoto - Fix downgrading Elasticsearch on RedHat hosts
+* [#476](https://github.com/elastic/ansible-elasticsearch/pull/476) - @Crazybus - Fix version locking for the elasticsearch-oss package
+
+
+## 6.3.1 - 2018/07/05
+
+### Features
+
+* 6.3.1 as default Elasticsearch version
+
+## 6.3.0.1 - 2018/06/28
+
+### Fixes
+
+* [#460](https://github.com/elastic/ansible-elasticsearch/pull/460) - @toadjaune - Make sure ansible doesn't fail if the default systemd service file doesn't exist
+* [#461](https://github.com/elastic/ansible-elasticsearch/pull/461) - @bilsch - Add missing become root in tasks that require root access
+
+
 ## 6.3.0 - 2018/06/18
 
 ### Breaking changes
