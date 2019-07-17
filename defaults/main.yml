@@ -1,8 +1,10 @@
 ---
-es_version: "7.1.1"
+es_version: "7.2.0"
 es_use_snapshot_release: false
 es_enable_xpack: true
 es_package_name: "elasticsearch"
+es_instance_name: "{{ ansible_hostname }}"
+es_node_name: "{{ inventory_hostname }}-{{ es_instance_name }}"
 es_version_lock: false
 es_use_repository: true
 es_add_repository: true
@@ -21,6 +23,7 @@ es_user: elasticsearch
 es_group: elasticsearch
 es_config: {}
 es_config_log4j2: log4j2.properties.j2
+es_use_shared_fs: true
 #Need to provide default directories
 es_conf_dir: "/etc/elasticsearch"
 es_pid_dir: "/var/run/elasticsearch"

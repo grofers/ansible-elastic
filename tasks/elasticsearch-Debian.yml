@@ -68,14 +68,10 @@
     allow_unauthenticated: "{{ 'no' if es_apt_key else 'yes' }}"
     cache_valid_time: 86400
   when: es_use_repository
-  register: debian_elasticsearch_install_from_repo
-  notify: restart elasticsearch
-  environment:
-    ES_PATH_CONF: "/etc/elasticsearch"
+  register: es_raw_install
 
-- name: Debian - Include versionlock
-  include: elasticsearch-Debian-version-lock.yml
-  when: es_version_lock
+- set_fact: es_install={{ es_raw_install }}
+  when: es_use_repository
 
 - name: Debian - Download elasticsearch from url
   get_url: url={% if es_custom_package_url is defined %}{{ es_custom_package_url }}{% else %}{{ es_package_url }}-{{ es_version }}.deb{% endif %} dest=/tmp/elasticsearch-{{ es_version }}.deb validate_certs=no
@@ -85,7 +81,7 @@
   become: yes
   apt: deb=/tmp/elasticsearch-{{ es_version }}.deb
   when: not es_use_repository
-  register: elasticsearch_install_from_package
-  notify: restart elasticsearch
-  environment:
-    ES_PATH_CONF: "/etc/elasticsearch"
+  register: es_raw_install
+
+- set_fact: es_install={{ es_raw_install }}
+  when: not es_use_repository

@@ -1,3 +1,4 @@
+---
 # Check for mandatory parameters
 
 - name: fail when es_proxy_port is not defined or is blank
@@ -26,5 +27,10 @@
      msg: "ERROR: INVALID CONFIG - YOU CANNOT CHANGE RESERVED USERS THROUGH THE FILE REALM. THE FOLLOWING CANNOT BE CHANGED: {{file_reserved_users}}. USE THE NATIVE REALM."
   when: file_reserved_users | default([]) | length > 0
 
-- name: set fact m_lock_enabled
-  set_fact: m_lock_enabled={{ es_config['bootstrap.memory_lock'] is defined and es_config['bootstrap.memory_lock'] == True }}
+- set_fact: m_lock_enabled={{ es_config['bootstrap.memory_lock'] is defined and es_config['bootstrap.memory_lock'] == True }}
+
+#TODO - if transport.host is not local maybe error on boostrap checks
+
+- set_fact: instance_default_file={{ default_file }}
+- set_fact: instance_init_script={{ init_script }}
+- set_fact: instance_sysd_script={{ sysd_script }}
